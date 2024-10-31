@@ -1,0 +1,32 @@
+<h1>{{#if veiculo}}
+        Editar Veículo
+    {{else}}
+        Cadastrar Veículo
+    {{/if}}
+</h1>
+ 
+<form action="{{#if veiculo}}
+        /veiculos/update/{{veiculo.id}}
+    {{else}}
+        /veiculos/add
+    {{/if}}"
+
+    method="post">
+    <label for="modelo">Modelo</label>
+    <input type="text" name="modelo" id="modelo" required>
+
+    <label for="marca">Marca</label>
+    <input type="text" name="marca" id="marca" required>
+
+    <label for="placa">Placa</label>
+    <input type="text" name="placa" id="placa" required>
+
+    <label for="situacao">Situação</label>
+    <select name="situacaoId" id="situacao" required>
+        {{#each situacoes}}
+            <option value="{{this.id}}">{{this.situacao}}</option>
+        {{/each}}
+    </select>
+
+    <button type="submit"> Cadastrar Veículo</button>
+</form>
